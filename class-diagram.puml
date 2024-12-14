@@ -1,0 +1,97 @@
+@startuml shelter-project
+
+class User <<Entity>> {
+    + name: String
+    + age: Number
+    + role: Role
+}
+
+class ShelterManager <<Entity>> {
+    + shelterOwned: Shelter
+    + updateShelterAnimalList()
+}
+
+class Client <<Entity>> {
+    + findShelter(): Shelter[]
+    + reserveMeeting()
+    + adoptAnimal()
+    + buyStuff()
+}
+
+class ShopOwner <<Entity>> {
+    + shopOwned: PetShop
+}
+
+enum Role {
+    CLIENT
+    SHELTER_MANAGER
+    SHOP_OWNER
+}
+
+class Shelter <<Entity>> {
+    + name: String
+    + currentAnimalCount: Number
+    + animalCapacity: Number
+    + contactInfo: ContactInfo
+    + animalList: Animal[]
+    + reservationList: Reservation[]
+}
+
+class Reservation <<ValueObject>> {
+    + reserverName: String
+    + reservationTime: String
+    + reservationDate: String
+}
+
+class ContactInfo <<ValueObject>> {
+    + phone: String
+    + email: String
+    + location: String
+}
+
+class Animal <<Entity>> {
+    + breed: Breed
+    + age: Number
+    + injuries: Injury[]
+}
+
+class Injury <<Entity>> {
+    + description: String
+}
+
+enum Breed {
+    DOG
+    CAT
+    BUDGIE
+    WILD_ANIMAL
+}
+
+class PetShop <<Entity>> {
+    + contactInfo: ContactInfo
+    + productList: Product[]
+}
+
+class Product <<Entity>> {
+    + category: String
+    + title: String
+    + price: Number
+    + rating: Number
+}
+
+User --> Role
+Client -up-|> User
+ShopOwner -up-|> User
+ShopOwner *--> PetShop
+PetShop *--> ContactInfo
+PetShop o--> Product
+ShelterManager -up-|> User
+ShelterManager *--> Shelter
+Shelter *--> ContactInfo
+Shelter *--> Reservation
+Shelter o--> Animal
+Animal --> Breed
+Animal *--> Injury
+
+
+
+@enduml
