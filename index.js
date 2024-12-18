@@ -10,6 +10,6 @@ const Product = require("./models/product");
 const Injury = require("./models/injury");
 const { clientDatabase, shelterManagerDatabase } = require("./database");
 
-const clients = clientDatabase.load();
+// const clients = clientDatabase.load();
 
-console.log(clients);
+console.log("week-3 branch testing");
