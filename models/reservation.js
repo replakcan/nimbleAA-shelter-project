@@ -1,7 +1,10 @@
 module.exports = class Reservation {
-  constructor(name, time, date) {
+  constructor(name) {
     this.name = name;
-    this.time = time;
-    this.date = date;
+    this.date = new Date();
   }
-}
+
+  static create({ name, time, date }) {
+    return new Reservation(name, time, date);
+  }
+};

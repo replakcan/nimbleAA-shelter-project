@@ -1,8 +1,10 @@
 class User {
-  constructor(name, age, Role) {
+  constructor(name, age) {
     this.name = name;
     this.age = age;
-    this.Role = Role;
+  }
+  static create({ name, age }) {
+    return new User(name, age);
   }
 }
 

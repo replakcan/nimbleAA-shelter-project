@@ -1,0 +1,1 @@
+[{"name":"Mecit","age":21,"Shelter":{"name":"shelterIstanbul","animalCapacity":29,"ContactInfo":{"phone":"12345","email":"shelter@ist.com","location":"Istanbul"},"animalList":[{"breed":"Cat","age":6,"injuries":[]},{"breed":"Bird","age":4,"injuries":[]}],"reservationList":[{"name":"alpoRes","date":"2024-12-18T10:15:57.511Z"}]}}]

@@ -1,9 +1,11 @@
 const User = require("./user");
 const Reservation = require("./reservation");
+const Animal = require("./animal");
 
 module.exports = class Client extends User {
-  constructor(name, age, Role) {
-    super(name, age, Role);
+  constructor(name, age, pets = []) {
+    super(name, age);
+    this.pets = pets;
   }
 
   findShelter() {}
@@ -23,7 +25,11 @@ module.exports = class Client extends User {
 
   buyStuff() {}
 
-  static create({ name, age, role }) {
-    return new Client(name, age, role);
+  static create({ name, age, pets }) {
+    const newClient = new Client(name, age, pets);
+
+    newClient.pets.map((pet) => Animal.create(pet));
+
+    return newClient;
   }
 };

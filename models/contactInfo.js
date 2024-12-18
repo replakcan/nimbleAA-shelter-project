@@ -4,4 +4,8 @@ module.exports = class ContactInfo {
     this.email = email;
     this.location = location;
   }
-}
+
+  static create({ phone, email, location }) {
+    return new ContactInfo(phone, email, location);
+  }
+};
