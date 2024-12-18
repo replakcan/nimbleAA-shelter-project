@@ -20,7 +20,7 @@ class BaseDatabase {
 
   insert(object) {
     const objects = this.load();
-   
+
     this.save(objects.concat(object));
   }
 
@@ -28,7 +28,7 @@ class BaseDatabase {
     const objects = this.load();
 
     objects.splice(index, 1);
-    
+
     this.save(objects);
   }
 
@@ -36,6 +36,11 @@ class BaseDatabase {
     const objects = this.load();
 
     const index = objects.findIndex((o) => o.id == object.id);
+
+    if (index == -1)
+      throw new Error(
+        `Cannot find ${this.model.name} instance with id ${object.id}`
+      );
 
     objects.splice(index, 1, object);
 
