@@ -8,11 +8,8 @@ const Animal = require("./models/animal");
 const Reservation = require("./models/reservation");
 const Product = require("./models/product");
 const Injury = require("./models/injury");
-const shelterManagerDatabase = require("./shelterManager-database");
-const clientDatabase = require("./client-database");
+const { clientDatabase, shelterManagerDatabase } = require("./database");
 
-const loadedClients = clientDatabase.load();
+const clients = clientDatabase.load();
 
-const alper = loadedClients[0];
-
-console.log(alper);
+console.log(clients);

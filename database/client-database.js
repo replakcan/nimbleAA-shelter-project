@@ -1,7 +1,7 @@
 const BaseDatabase = require("./base-database");
-const ShelterManager = require("./models/shelterManager");
+const Client = require("../models/client");
 
-class ShelterManagerDatabase extends BaseDatabase {
+class ClientDatabase extends BaseDatabase {
     findByName(name) {
         const objects = this.load();
     
@@ -9,4 +9,4 @@ class ShelterManagerDatabase extends BaseDatabase {
       }
 }
 
-module.exports = new ShelterManagerDatabase(ShelterManager);
+module.exports = new ClientDatabase(Client);

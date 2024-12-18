@@ -1,10 +1,12 @@
 const User = require("./user");
 const Reservation = require("./reservation");
 const Animal = require("./animal");
+const uuid = require("uuid");
 
 module.exports = class Client extends User {
-  constructor(name, age, pets = []) {
+  constructor(id = uuid.v4(), name, age, pets = []) {
     super(name, age);
+    this.id = id;
     this.pets = pets;
   }
 
@@ -25,11 +27,10 @@ module.exports = class Client extends User {
 
   buyStuff() {}
 
-  static create({ name, age, pets }) {
-    const newClient = new Client(name, age, pets);
+  static create({ id, name, age, pets }) {
+    const newClient = new Client(id, name, age, pets);
 
     newClient.pets.map((pet) => Animal.create(pet));
-
     return newClient;
   }
 };
