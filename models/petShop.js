@@ -1,6 +1,7 @@
 const ContactInfo = require("./contactInfo");
 const Product = require("./product");
 
+//TODO [alper] petShop'un id'si olmali mi?
 module.exports = class PetShop {
   constructor(ContactInfo, productList = []) {
     this.ContactInfo = ContactInfo;

@@ -2,6 +2,7 @@ const Animal = require("./animal");
 const ContactInfo = require("./contactInfo");
 const Reservation = require("./reservation");
 
+//TODO [alper] Shelter'in id'si olmali mi?
 module.exports = class Shelter {
   constructor(
     name,
