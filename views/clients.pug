@@ -1,20 +1,9 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title HomePage
-        style 
-            body {
-                color: green
-                background: wheat }
-            
-    body
-        h1 Welcome to pet-adoption app
+extends layout
+block content
+    h2 Clients
+    p There are #{clients.length} clients registered in the system.
 
-        h2 Clients
-        p There are #{clients.length} clients registered in the system.
-
-        ol
-            each client in clients
-                li #{client.name} is #{client.age} years old and has #{client.pets.length} pets
+    ol
+        each client in clients
+            li 
+                a(href=`clients/${client.id}`) #{client.name}
