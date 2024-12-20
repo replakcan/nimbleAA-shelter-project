@@ -6,34 +6,69 @@ class BaseDatabase {
     this.filename = model.name.toLowerCase();
   }
 
-  save(data) {
+  /* save(data) {
     fs.writeFileSync(`./${this.filename}.json`, JSON.stringify(data));
+  } */
+
+  save(objects) {
+    return new Promise((resolve, reject) => {
+      fs.writeFile(
+        `./${this.filename}.json`,
+        JSON.stringify(objects),
+        "utf-8",
+        (err) => {
+          if (err) return reject(err);
+          resolve();
+        }
+      );
+    });
   }
 
-  load() {
+  /* load() {
     const objects = JSON.parse(
       fs.readFileSync(`./${this.filename}.json`, "utf-8")
     );
 
     return objects.map((o) => this.model.create(o));
+  } */
+
+  load() {
+    return new Promise((resolve, reject) => {
+      fs.readFile(`./${this.filename}.json`, "utf-8", (err, data) => {
+        if (err) {
+          return reject(err);
+        }
+
+        const objects = JSON.parse(data);
+
+        resolve(objects.map(this.model.create));
+      });
+    });
   }
 
-  insert(object) {
+  /* insert(object) {
     const objects = this.load();
 
     this.save(objects.concat(object));
+  } */
+
+  async insert(object) {
+    // return this.load().then((objects) => this.save(objects.concat(object)));
+
+    const objects = await this.load();
+    return this.save(objects.concat(object)); // disarida kullanirken await diyecegimiz icin son satir'a await dememe gerek yok, direkt return de edebilirim
   }
 
-  remove(index) {
-    const objects = this.load();
+  async remove(index) {
+    const objects = await this.load();
 
     objects.splice(index, 1);
 
-    this.save(objects);
+    return this.save(objects);
   }
 
-  update(object) {
-    const objects = this.load();
+  async update(object) {
+    const objects = await this.load();
 
     const index = objects.findIndex((o) => o.id == object.id);
 
@@ -44,7 +79,7 @@ class BaseDatabase {
 
     objects.splice(index, 1, object);
 
-    this.save(objects);
+    return this.save(objects);
   }
 }
 

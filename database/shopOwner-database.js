@@ -1,7 +1,7 @@
 const BaseDatabase = require("./base-database");
-const Client = require("../models/client");
+const ShopOwner = require("../models/shopOwner");
 
-class ClientDatabase extends BaseDatabase {
+class ShopOwnerDatabase extends BaseDatabase {
   async findByName(name) {
     const objects = await this.load();
 
@@ -9,4 +9,4 @@ class ClientDatabase extends BaseDatabase {
   }
 }
 
-module.exports = new ClientDatabase(Client);
+module.exports = new ShopOwnerDatabase(ShopOwner);
