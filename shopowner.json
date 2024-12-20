@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Murat",
+    "age": 49,
+    "id": "1bb7a78e-5ca0-4ec6-a6ae-2c38e4937f98",
+    "PetShop": {
+      "ContactInfo": {
+        "phone": 531923,
+        "email": "murat@abi.com",
+        "location": "Istanbul"
+      },
+      "productList": [
+        {
+          "category": "Oyuncak",
+          "title": "Titreyen Top",
+          "price": 14,
+          "rating": 4.2
+        }
+      ]
+    }
+  }
+]
