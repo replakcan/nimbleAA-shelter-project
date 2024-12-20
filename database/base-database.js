@@ -83,7 +83,7 @@ class BaseDatabase {
     return this.save(objects);
   }
 
-  async find(prop, value) {
+  async findBy(prop, value) {
     const objects = await this.load();
 
     return objects.find((object) => object[prop] == value);
