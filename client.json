@@ -1,1 +1,33 @@
-[{"name":"Alper","age":28,"id":"aa11f62d-5072-4ee8-b3da-c1f0870b03ed","pets":[]}]
+[[
+  "1",
+  "2",
+  "3",
+  "4"
+],{
+  "name": "5",
+  "age": 28,
+  "id": "6",
+  "pets": "7"
+},{
+  "name": "8",
+  "age": 20,
+  "id": "9",
+  "pets": "10"
+},{
+  "name": "11",
+  "age": 20,
+  "id": "12",
+  "pets": "13"
+},{
+  "name": "14",
+  "age": 28,
+  "id": "15",
+  "pets": "16"
+},"Alper","dcba3502-96d8-4b74-ac96-96854ec351bf",[],"Sude","ad0cb883-5f6a-45c9-896d-6ce3928d95be",[
+  "17"
+],"Nermin","cd657d27-ea78-4f99-ae5c-3665fa594a2d",[],"Mutlu","16d1cbec-4456-493e-b82e-b05b1fd8a142",[],{
+  "id": "18",
+  "breed": "19",
+  "age": 1,
+  "injuries": "20"
+},"cd662b21-4870-4e19-a0fe-633bff6d98df","Cat",[]]

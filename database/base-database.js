@@ -1,4 +1,5 @@
 const fs = require("fs");
+const flatted = require("flatted");
 
 class BaseDatabase {
   constructor(model) {
@@ -14,7 +15,7 @@ class BaseDatabase {
     return new Promise((resolve, reject) => {
       fs.writeFile(
         `./${this.filename}.json`,
-        JSON.stringify(objects),
+        flatted.stringify(objects, null, 2),
         "utf-8",
         (err) => {
           if (err) return reject(err);
@@ -39,7 +40,7 @@ class BaseDatabase {
           return reject(err);
         }
 
-        const objects = JSON.parse(data);
+        const objects = flatted.parse(data);
 
         resolve(objects.map(this.model.create));
       });
@@ -80,6 +81,12 @@ class BaseDatabase {
     objects.splice(index, 1, object);
 
     return this.save(objects);
+  }
+
+  async find(prop, value) {
+    const objects = await this.load();
+
+    return objects.find((object) => object[prop] == value);
   }
 }
 

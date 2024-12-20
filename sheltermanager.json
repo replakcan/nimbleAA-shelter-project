@@ -1,28 +1,30 @@
-[
-  {
-    "name": "Yasemin",
-    "age": 33,
-    "id": "9188b787-5ed5-44a7-a16c-1fadb7133830",
-    "Shelter": {
-      "name": "Yuvacik",
-      "animalCapacity": 49,
-      "ContactInfo": {
-        "phone": 842752,
-        "email": "yasmin@shelter.com",
-        "location": "Izmir"
-      },
-      "animalList": [
-        {
-          "id": "94109aa0-a02e-4f7b-9ee6-8a5f54f8a33b",
-          "breed": "Dog",
-          "age": 5,
-          "injuries": [
-            { "description": "soguk-alginligi" },
-            { "description": "sol-on-ayak-hafif-topalliyor" }
-          ]
-        }
-      ],
-      "reservationList": []
-    }
-  }
-]
+[{
+  "name": "1",
+  "age": 33,
+  "id": "2",
+  "Shelter": "3"
+},"Yasemin","19df1f74-ea0e-4f19-b1eb-c46e48ccad5e",{
+  "name": "4",
+  "animalCapacity": 49,
+  "ContactInfo": "5",
+  "animalList": "6",
+  "reservationList": "7"
+},"Yuvacik",{
+  "phone": 842752,
+  "email": "8",
+  "location": "9"
+},[
+  "10"
+],[],"yasmin@shelter.com","Izmir",{
+  "id": "11",
+  "breed": "12",
+  "age": 5,
+  "injuries": "13"
+},"6d6133f7-0413-41d4-b4af-8bc07bbe34d3","Dog",[
+  "14",
+  "15"
+],{
+  "description": "16"
+},{
+  "description": "17"
+},"soguk-alginligi","sol-on-ayak-hafif-topalliyor"]
