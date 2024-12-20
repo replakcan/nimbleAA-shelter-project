@@ -55,13 +55,35 @@ class BaseDatabase {
 
   async insert(object) {
     // return this.load().then((objects) => this.save(objects.concat(object)));
-
     const objects = await this.load();
-    return this.save(objects.concat(object)); // disarida kullanirken await diyecegimiz icin son satir'a await dememe gerek yok, direkt return de edebilirim
+
+    if (!(object instanceof this.model)) {
+      object = this.model.create(object);
+    }
+
+    await this.save(objects.concat(object)); // disarida kullanirken await diyecegimiz icin son satir'a await dememe gerek yok, direkt return de edebilirim
+    return object;
   }
 
   async remove(index) {
     const objects = await this.load();
+
+    objects.splice(index, 1);
+
+    return this.save(objects);
+  }
+
+  async removeBy(prop, value) {
+    const objects = await this.load();
+
+    const object = objects.find((obj) => obj[prop] == value);
+
+    const index = objects.findIndex((o) => o.id == object.id);
+
+    if (index == -1)
+      throw new Error(
+        `Cannot find ${this.model.name} instance with id ${object.id}`
+      );    
 
     objects.splice(index, 1);
 

@@ -47,6 +47,7 @@ const yasemince = new ShelterManager(
   )
 );
 
+alper.reserveMeeting(yasemince);
 main = async () => {
   /* const clients = await clientDatabase
     .save([alper])
@@ -54,19 +55,19 @@ main = async () => {
     .then(() => clientDatabase.insert(mutlu))
     .then(() => clientDatabase.load()); */
   try {
-    // await clientDatabase.save([alper, sude, nermin]);
-    // await clientDatabase.insert(mutlu);
-    // await shelterManagerDatabase.save(yasemince)
-    // await shopOwnerDatabase.save(murat)
+    await clientDatabase.save([alper, sude, nermin]);
+    await clientDatabase.insert(mutlu);
+    await shelterManagerDatabase.save(yasemince)
+    await shopOwnerDatabase.save(murat)
     // await clientDatabase.remove(1);
     // await clientDatabase.update(alper);
     const clients = await clientDatabase.load();
-    const sudeska = await clientDatabase.find("id", "dcba3502-96d8-4b74-ac96-96854ec351bf");
+    // const sudeska = await clientDatabase.findBy("id", "dcba3502-96d8-4b74-ac96-96854ec351bf");
     // const alpo = await clientDatabase.findByName("Alper");
     
     // console.log(alpo);
-    console.log(sudeska);
-    // console.log(clients);
+    // console.log(sudeska);
+    console.log(clients);
   } catch (e) {
     return console.log(e);
   }

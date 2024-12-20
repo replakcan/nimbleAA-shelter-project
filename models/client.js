@@ -4,10 +4,11 @@ const Animal = require("./animal");
 const uuid = require("uuid");
 
 module.exports = class Client extends User {
-  constructor(id = uuid.v4(), name, age, pets = []) {
+  constructor(id = uuid.v4(), name, age, pets = [], reservationList = []) {
     super(name, age);
     this.id = id;
     this.pets = pets;
+    this.reservationList = reservationList;
   }
 
   findShelter() {}
@@ -20,6 +21,7 @@ module.exports = class Client extends User {
       newDate.getTime()
     );
 
+    this.reservationList.push(newReserv);
     shelterOwner.Shelter.reservationList.push(newReserv);
   }
 
@@ -27,10 +29,13 @@ module.exports = class Client extends User {
 
   buyStuff() {}
 
-  static create({ id, name, age, pets }) {
-    const newClient = new Client(id, name, age, pets);
+  static create({ id, name, age, pets, reservationList }) {
+    const newClient = new Client(id, name, age, pets, reservationList);
 
     newClient.pets.map((pet) => Animal.create(pet));
+    newClient.reservationList.map((reservation) =>
+      Reservation.create(reservation)
+    );
     return newClient;
   }
 };
