@@ -1,22 +1,22 @@
 POST http://localhost:3000/clients HTTP/1.1
 content-type: application/json
 
-{"name": "Armagan", "age": 21}
+{"name": "Alper", "age": 28}
 
 ###
 
-GET http://localhost:3000/clients/67670299638f8b761c31d9fb HTTP/1.1
+GET http://localhost:3000/clients/67671f7d34b5790e23f618e9 HTTP/1.1
 
 ###
 
-POST http://localhost:3000/clients/a07f0465-f5a2-473c-9ffa-d92846ef5ff0/reservations HTTP/1.1
+POST http://localhost:3000/clients/67671f7d34b5790e23f618e9/reservations HTTP/1.1
 content-type: application/json
 
 {"shelterManagerId": "e3c59b0f-ee73-48ea-a986-b6f47bc9e00e"}
 
 ###
 
-DELETE http://localhost:3000/clients/6766fe1c993e3b7006529c19 HTTP/1.1
+DELETE http://localhost:3000/clients/67671eeab66e01624d25f117 HTTP/1.1
 
 ###
 
