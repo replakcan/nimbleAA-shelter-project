@@ -1,4 +1,5 @@
 const fs = require("fs");
+const flatted = require("flatted");
 
 class BaseDatabase {
   constructor(model) {
@@ -6,15 +7,11 @@ class BaseDatabase {
     this.filename = model.name.toLowerCase();
   }
 
-  /* save(data) {
-    fs.writeFileSync(`./${this.filename}.json`, JSON.stringify(data));
-  } */
-
   save(objects) {
     return new Promise((resolve, reject) => {
       fs.writeFile(
         `./${this.filename}.json`,
-        JSON.stringify(objects),
+        flatted.stringify(objects, null, 2),
         "utf-8",
         (err) => {
           if (err) return reject(err);
@@ -24,14 +21,6 @@ class BaseDatabase {
     });
   }
 
-  /* load() {
-    const objects = JSON.parse(
-      fs.readFileSync(`./${this.filename}.json`, "utf-8")
-    );
-
-    return objects.map((o) => this.model.create(o));
-  } */
-
   load() {
     return new Promise((resolve, reject) => {
       fs.readFile(`./${this.filename}.json`, "utf-8", (err, data) => {
@@ -39,28 +28,43 @@ class BaseDatabase {
           return reject(err);
         }
 
-        const objects = JSON.parse(data);
+        const objects = flatted.parse(data);
 
         resolve(objects.map(this.model.create));
       });
     });
   }
 
-  /* insert(object) {
-    const objects = this.load();
-
-    this.save(objects.concat(object));
-  } */
-
   async insert(object) {
-    // return this.load().then((objects) => this.save(objects.concat(object)));
-
     const objects = await this.load();
-    return this.save(objects.concat(object)); // disarida kullanirken await diyecegimiz icin son satir'a await dememe gerek yok, direkt return de edebilirim
+
+    if (!(object instanceof this.model)) {
+      object = this.model.create(object);
+    }
+
+    await this.save(objects.concat(object)); // disarida kullanirken await diyecegimiz icin son satir'a await dememe gerek yok, direkt return de edebilirim
+    return object;
   }
 
   async remove(index) {
     const objects = await this.load();
+
+    objects.splice(index, 1);
+
+    return this.save(objects);
+  }
+
+  async removeBy(prop, value) {
+    const objects = await this.load();
+
+    const object = objects.find((obj) => obj[prop] == value);
+
+    const index = objects.findIndex((o) => o.id == object.id);
+
+    if (index == -1)
+      throw new Error(
+        `Cannot find ${this.model.name} instance with id ${object.id}`
+      );    
 
     objects.splice(index, 1);
 
@@ -80,6 +84,12 @@ class BaseDatabase {
     objects.splice(index, 1, object);
 
     return this.save(objects);
+  }
+
+  async findBy(prop, value) {
+    const objects = await this.load();
+
+    return objects.find((object) => object[prop] == value);
   }
 }
 
