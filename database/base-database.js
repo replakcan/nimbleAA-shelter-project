@@ -7,10 +7,6 @@ class BaseDatabase {
     this.filename = model.name.toLowerCase();
   }
 
-  /* save(data) {
-    fs.writeFileSync(`./${this.filename}.json`, JSON.stringify(data));
-  } */
-
   save(objects) {
     return new Promise((resolve, reject) => {
       fs.writeFile(
@@ -24,14 +20,6 @@ class BaseDatabase {
       );
     });
   }
-
-  /* load() {
-    const objects = JSON.parse(
-      fs.readFileSync(`./${this.filename}.json`, "utf-8")
-    );
-
-    return objects.map((o) => this.model.create(o));
-  } */
 
   load() {
     return new Promise((resolve, reject) => {
@@ -47,14 +35,7 @@ class BaseDatabase {
     });
   }
 
-  /* insert(object) {
-    const objects = this.load();
-
-    this.save(objects.concat(object));
-  } */
-
   async insert(object) {
-    // return this.load().then((objects) => this.save(objects.concat(object)));
     const objects = await this.load();
 
     if (!(object instanceof this.model)) {
