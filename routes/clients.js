@@ -42,8 +42,16 @@ router.post("/:clientId/reservations", async (req, res) => {
   res.send(flatted.stringify(client));
 });
 
+router.patch("/:clientId", async (req, res) => {
+  const { name } = req.body;
+  const { clientId } = req.params;
+
+  await clientDatabase.update(clientId, { name });
+});
+
+//ABSTRACTION_LEAK örneği: normalde parametre ismim "id"'ydi sadece, kendi yazdığım veri tabanından mongoDB'ye geçerken parametre ismini "_id" yapmam gerekti çünkü mongoDB böyle saklıyor id'leri. Database ile route dosyalarım yeterince iyi tasarlansaydı birbirlerinden haberleri olmasına gerek olmayacaktı ama şu an mongoDB'ye ayak uydurabilmek için istemediğim bir sebepten route'umu güncellemek durumunda kaldım.
 router.delete("/:clientId", async (req, res) => {
-  const client = await clientDatabase.removeBy("id", req.params.clientId);
+  const client = await clientDatabase.removeBy("_id", req.params.clientId);
 
   res.send(client);
 });
