@@ -1,0 +1,17 @@
+POST http://localhost:3000/clients HTTP/1.1
+content-type: application/json
+
+{"name": "Bilal Emmi", "age": 54}
+
+###
+
+GET http://localhost:3000/clients/a07f0465-f5a2-473c-9ffa-d92846ef5ff0 HTTP/1.1
+
+###
+
+POST http://localhost:3000/clients/a07f0465-f5a2-473c-9ffa-d92846ef5ff0/reservations HTTP/1.1
+content-type: application/json
+
+{"shelterManagerId": "e3c59b0f-ee73-48ea-a986-b6f47bc9e00e"}
+
+###
