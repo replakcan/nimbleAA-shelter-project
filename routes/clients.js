@@ -1,11 +1,10 @@
-const { clientDatabase, shelterManagerDatabase } = require("../database");
+const { clientDatabase, managerDatabase } = require("../database");
 const flatted = require("flatted");
 
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
   const clients = await clientDatabase.load();
-  //   res.send(flatted.stringify(clients));
   res.render("clients", { clients });
 });
 
@@ -19,8 +18,6 @@ router.get("/:clientId", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  // const client = Client.create(req.body);
-
   const client = await clientDatabase.insert(req.body);
 
   res.send(client);
@@ -28,19 +25,16 @@ router.post("/", async (req, res) => {
 
 router.post("/:clientId/reservations", async (req, res) => {
   const { clientId } = req.params;
-  const { shelterManagerId } = req.body;
+  const { managerId } = req.body;
 
-  const client = await clientDatabase.findBy("_id", clientId);
-  const shelterManager = await shelterManagerDatabase.findBy(
-    "_id",
-    shelterManagerId
-  );
+  const client = await clientDatabase.find(clientId);
+  const manager = await managerDatabase.find(managerId);
 
-  client.reserveMeeting(shelterManager);
+  const meeting = await client.reserveMeeting(manager);
 
   await clientDatabase.update(client);
 
-  res.send(flatted.stringify(client));
+  res.send(meeting);
 });
 
 router.patch("/:clientId", async (req, res) => {
