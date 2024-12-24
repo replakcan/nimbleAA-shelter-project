@@ -1,12 +1,10 @@
-module.exports = class Product {
-  constructor(category, title, price, rating) {
-    this.category = category;
-    this.title = title;
-    this.price = price;
-    this.rating = rating;
-  }
+const mongoose = require("mongoose");
 
-  static create({ category, title, price, rating }) {
-    return new Product(category, title, price, rating);
-  }
-};
+const ProductSchema = new mongoose.Schema({
+  category: String,
+  title: String,
+  price: Number,
+  rating: String,
+});
+
+module.exports = mongoose.model("Product", ProductSchema);

@@ -1,15 +1,15 @@
-const PetShop = require("./petShop");
-const User = require("./user");
-const uuid = require("uuid");
+const mongoose = require("mongoose");
 
-module.exports = class ShopOwner extends User {
-  constructor(id = uuid.v4(), name, age, PetShop) {
-    super(name, age);
-    this.id = id;
-    this.PetShop = PetShop;
-  }
+const PetShopOwnerSchema = new mongoose.Schema({
+  name: String,
+  age: Number,
+  petShop: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "PetShop",
+    autopopulate: true,
+  },
+});
 
-  static create({ id, name, age, PetShop: ptshp }) {
-    return new ShopOwner(id, name, age, PetShop.create(ptshp));
-  }
-};
+PetShopOwnerSchema.plugin(require("mongoose-autopopulate"));
+
+module.exports = mongoose.model("PetShopOwner", PetShopOwnerSchema);
