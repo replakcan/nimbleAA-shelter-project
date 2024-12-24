@@ -9,10 +9,10 @@ GET http://localhost:3000/clients/67671f7d34b5790e23f618e9 HTTP/1.1
 
 ###
 
-POST http://localhost:3000/clients/67671f7d34b5790e23f618e9/reservations HTTP/1.1
+POST http://localhost:3000/clients/6766fbdf8108abdaa09a0871/reservations HTTP/1.1
 content-type: application/json
 
-{"shelterManagerId": "e3c59b0f-ee73-48ea-a986-b6f47bc9e00e"}
+{"managerId": "676969298d681211d25a0a1b"}
 
 ###
 
@@ -25,4 +25,51 @@ content-type: application/json
 
 {"name": "Hector Salamanca"}
 
+###
+
+POST http://localhost:3000/managers HTTP/1.1
+content-type: application/json
+
+{"name": "Gustavo Ping", "age": 54}
+
+###
+
+DELETE http://localhost:3000/managers/67696a7ae78a7a68941b2ac2 HTTP/1.1
+
+###
+
+GET http://localhost:3000/managers/676969298d681211d25a0a1b HTTP/1.1
+
+###
+
+POST http://localhost:3000/shelters HTTP/1.1
+content-type: application/json
+
+{
+    "name": "shelterIstanblue",
+    "animalCapacity": 54,
+    "contactInfo": "676aeb5512f86d3bbb5e217d",
+    "animalList": [],
+    "reservationList": []
+}
+###
+
+POST http://localhost:3000/contact-infos HTTP/1.1
+content-type: application/json
+
+{
+    "phone":"+905321234123142" , "email":"shelter@ovski.com",
+    "location":"Istanbul"
+}
+
+###
+
+POST http://localhost:3000/managers HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Husamettin",
+    "age": 45,
+    "shelter": "676aed93f53e4123641ef66c"
+}
 ###

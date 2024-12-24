@@ -1,5 +1,7 @@
 const clientDatabase = require("./client-database");
-const shelterManagerDatabase = require("./shelterManager-database");
+const contactInfoDatabase = require("./contact-info-database");
+const managerDatabase = require("./manager-database");
+const shelterDatabase = require("./shelter-database");
 const shopOwnerDatabase = require("./shopOwner-database")
 
-module.exports = { clientDatabase, shelterManagerDatabase, shopOwnerDatabase };
+module.exports = { clientDatabase, managerDatabase, shopOwnerDatabase, shelterDatabase, contactInfoDatabase };

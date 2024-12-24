@@ -1,6 +1,6 @@
 const Client = require("./models/client");
 const ShopOwner = require("./models/shopOwner");
-const ShelterManager = require("./models/shelterManager");
+const Manager = require("./models/manager");
 const PetShop = require("./models/petShop");
 const Shelter = require("./models/shelter");
 const ContactInfo = require("./models/contactInfo");
@@ -10,7 +10,7 @@ const Product = require("./models/product");
 const Injury = require("./models/injury");
 const {
   clientDatabase,
-  shelterManagerDatabase,
+  managerDatabase,
   shopOwnerDatabase,
 } = require("./database");
 
@@ -30,7 +30,7 @@ const {
 //   ])
 // );
 
-/* const yasemince = new ShelterManager(
+/* const yasemince = new Manager(
   undefined,
   "Yasemin",
   33,
@@ -51,10 +51,10 @@ const {
 main = async () => {
   try {
     const clients = await clientDatabase.load();
-    const managers = await shelterManagerDatabase.load();
+    const managers = await managerDatabase.load();
     // const sude = await clientDatabase.findBy("id", "8d67e67f-76f2-42c0-8ca5-ec930add93e6");
 
-    // const yasmin = await shelterManagerDatabase.findBy("name", "Yasemin");
+    // const yasmin = await managerDatabase.findBy("name", "Yasemin");
     // sude.reserveMeeting(yasmin);
     console.log(managers[0].id);
   } catch (e) {
@@ -68,10 +68,10 @@ main();
 
 // clientDatabase.save([alper, mutlu]);
 // shopOwnerDatabase.save([murat]);
-// shelterManagerDatabase.save([yasemince]);
+// managerDatabase.save([yasemince]);
 
 // const clients = clientDatabase.load();
-// const managers = shelterManagerDatabase.load();
+// const managers = managerDatabase.load();
 // const shopOwners = shopOwnerDatabase.load();
 
 // console.log(clients, managers, shopOwners);
