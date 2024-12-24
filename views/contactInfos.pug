@@ -1,0 +1,9 @@
+extends layout
+block content
+    h2 ContactInfos
+    p There are #{contactInfos.length} contactInfos registered in the system.
+
+    ol
+        each contactInfo in contactInfos
+            li 
+                pre #{JSON.stringify(contactInfo, null, 4)}
