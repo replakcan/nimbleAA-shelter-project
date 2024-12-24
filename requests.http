@@ -9,10 +9,10 @@ GET http://localhost:3000/clients/67671f7d34b5790e23f618e9 HTTP/1.1
 
 ###
 
-POST http://localhost:3000/clients/6766fbdf8108abdaa09a0871/reservations HTTP/1.1
+POST http://localhost:3000/clients/67696772cd255381bdebc8a0/reservations HTTP/1.1
 content-type: application/json
 
-{"managerId": "676969298d681211d25a0a1b"}
+{"managerId": "676b00c12a65bcdb4dd3cf6a"}
 
 ###
 
@@ -34,7 +34,7 @@ content-type: application/json
 
 ###
 
-DELETE http://localhost:3000/managers/67696a7ae78a7a68941b2ac2 HTTP/1.1
+DELETE http://localhost:3000/managers/676ae3aa72b498e5f11b0a00 HTTP/1.1
 
 ###
 
@@ -46,9 +46,9 @@ POST http://localhost:3000/shelters HTTP/1.1
 content-type: application/json
 
 {
-    "name": "shelterIstanblue",
-    "animalCapacity": 54,
-    "contactInfo": "676aeb5512f86d3bbb5e217d",
+    "name": "ankaraMessi",
+    "animalCapacity": 76,
+    "contactInfo": "676b00882a65bcdb4dd3cf65",
     "animalList": [],
     "reservationList": []
 }
@@ -58,8 +58,9 @@ POST http://localhost:3000/contact-infos HTTP/1.1
 content-type: application/json
 
 {
-    "phone":"+905321234123142" , "email":"shelter@ovski.com",
-    "location":"Istanbul"
+    "phone":"+335252352" , 
+    "email":"mecit@shelter.com",
+    "location":"Ankara"
 }
 
 ###
@@ -68,8 +69,8 @@ POST http://localhost:3000/managers HTTP/1.1
 content-type: application/json
 
 {
-    "name": "Husamettin",
+    "name": "Mecit",
     "age": 45,
-    "shelter": "676aed93f53e4123641ef66c"
+    "shelter": "676b00a22a65bcdb4dd3cf67"
 }
 ###

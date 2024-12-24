@@ -17,7 +17,7 @@ const ShelterSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Reservation",
-      autopopulate: 2,
+      autopopulate: 3,
     },
   ],
 });

@@ -33,6 +33,8 @@ router.post("/:clientId/reservations", async (req, res) => {
   const meeting = await client.reserveMeeting(manager);
 
   await clientDatabase.update(client);
+  await managerDatabase.update(manager);
+
 
   res.send(meeting);
 });

@@ -23,12 +23,16 @@ module.exports = class Manager extends User {
         }; */
 
 const mongoose = require("mongoose");
-const Shelter = require("./shelter")
+const Shelter = require("./shelter");
 
 const ManagerSchema = new mongoose.Schema({
   name: String,
   age: Number,
-  shelter: { type: mongoose.Schema.Types.ObjectId, ref: "Shelter", autopopulate: true },
+  shelter: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Shelter",
+    autopopulate: 2,
+  },
 });
 
 ManagerSchema.plugin(require("mongoose-autopopulate"));
