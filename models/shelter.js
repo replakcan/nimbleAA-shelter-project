@@ -2,8 +2,32 @@ const Animal = require("./animal");
 const ContactInfo = require("./contactInfo");
 const Reservation = require("./reservation");
 
+const mongoose = require("mongoose");
+
+const ShelterSchema = new mongoose.Schema({
+  name: String,
+  animalCapacity: Number,
+  contactInfo: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ContactInfo",
+    autopopulate: 2,
+  },
+  animalList: [],
+  reservationList: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Reservation",
+      autopopulate: 2,
+    },
+  ],
+});
+
+ShelterSchema.plugin(require("mongoose-autopopulate"));
+
+module.exports = mongoose.model("Shelter", ShelterSchema);
+
 //TODO [alper] Shelter'in id'si olmali mi?
-module.exports = class Shelter {
+/* module.exports = class Shelter {
   constructor(
     name,
     animalCapacity,
@@ -38,4 +62,4 @@ module.exports = class Shelter {
 
     return newShelter;
   }
-};
+}; */
