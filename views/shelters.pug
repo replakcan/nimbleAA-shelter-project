@@ -1,0 +1,9 @@
+extends layout
+block content
+    h2 Shelters
+    p There are #{shelters.length} shelters registered in the system.
+
+    ol
+        each shelter in shelters
+            li 
+                a(href=`shelters/${shelter.id}`) #{shelter.name}
