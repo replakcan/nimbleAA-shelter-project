@@ -1,0 +1,9 @@
+extends layout
+block content
+    h2 Managers
+    p There are #{managers.length} managers registered in the system.
+
+    ol
+        each manager in managers
+            li 
+                a(href=`managers/${manager.id}`) #{manager.name}
