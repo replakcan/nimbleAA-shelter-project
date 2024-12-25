@@ -10,10 +10,7 @@ router.get("/", async (req, res) => {
 
 //abstraction-leak
 router.get("/:managerId", async (req, res) => {
-  const manager = await managerDatabase.findBy(
-    "_id",
-    req.params.managerId
-  );
+  const manager = await managerDatabase.findBy("_id", req.params.managerId);
 
   if (!manager)
     return res.status(404).send("There is no manager with given id");
@@ -35,10 +32,7 @@ router.patch("/:managerId", async (req, res) => {
 });
 
 router.delete("/:managerId", async (req, res) => {
-  const manager = await managerDatabase.removeBy(
-    "_id",
-    req.params.managerId
-  );
+  const manager = await managerDatabase.removeBy("_id", req.params.managerId);
 
   res.send(manager);
 });

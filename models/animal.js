@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Injury = require("./injury");
 
 const AnimalSchema = new mongoose.Schema({
   breed: String,

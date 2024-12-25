@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const PetShop = require("./petShop");
 
 const PetShopOwnerSchema = new mongoose.Schema({
   name: String,

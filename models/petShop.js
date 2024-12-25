@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const ContactInfo = require("./contactInfo");
+const Product = require("./product");
 
 const PetShopSchema = new mongoose.Schema({
   contactInfo: {
