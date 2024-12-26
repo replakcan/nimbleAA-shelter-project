@@ -1,0 +1,7 @@
+extends layout
+block content            
+    body
+        h2 Animal Details:
+        ol
+            each animal in animalList
+                pre #{JSON.stringify(animal, null, 4)}

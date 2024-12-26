@@ -9,10 +9,10 @@ GET http://localhost:3000/clients/67671f7d34b5790e23f618e9 HTTP/1.1
 
 ###
 
-POST http://localhost:3000/clients/676704801d12c38dc15d618e/reservations HTTP/1.1
+POST http://localhost:3000/clients/67671f7d34b5790e23f618e9/reservations HTTP/1.1
 content-type: application/json
 
-{"managerId": "676aee35f53e4123641ef679"}
+{"managerId": "676b00c12a65bcdb4dd3cf6a"}
 
 ###
 
@@ -73,4 +73,14 @@ content-type: application/json
     "age": 45,
     "shelter": "676b00a22a65bcdb4dd3cf67"
 }
+###
+
+POST http://localhost:3000/managers/676aee35f53e4123641ef679/animal-list HTTP/1.1
+content-type: application/json
+
+{
+    "breed": "Cat",
+    "age": 5
+}
+
 ###

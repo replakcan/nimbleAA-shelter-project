@@ -16,14 +16,14 @@ const ShelterSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Animal",
-      autopopulate: 3,
+      autopopulate: 2,
     },
   ],
   reservationList: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Reservation",
-      autopopulate: 3,
+      autopopulate: 2,
     },
   ],
 });

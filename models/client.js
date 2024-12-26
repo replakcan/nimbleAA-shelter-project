@@ -20,12 +20,13 @@ ClientSchema.methods.reserveMeeting = async function (manager) {
     name: this.name + "/" + manager.name,
   });
   await this.reservationList.push(reservation);
+  console.log("manager:", manager.shelter.reservationList);
   await manager.shelter.reservationList.push(reservation);
   await this.save();
   await manager.shelter.save();
   await manager.save();
 
-  return reservation;
+  return manager;
 };
 
 ClientSchema.plugin(require("mongoose-autopopulate"));
