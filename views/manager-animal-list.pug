@@ -4,4 +4,6 @@ block content
         h2 Animal Details:
         ol
             each animal in animalList
-                pre #{JSON.stringify(animal, null, 4)}
+                li
+                    h3 animal is a #{animal.breed} and #{animal.age} years old
+                

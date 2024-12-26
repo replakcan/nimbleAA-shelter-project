@@ -39,7 +39,8 @@ router.post("/:managerId/animal-list", async (req, res) => {
 
 //abstraction-leak
 router.get("/:managerId", async (req, res) => {
-  const manager = await managerDatabase.findBy("_id", req.params.managerId);
+  const { managerId } = req.params;
+  const manager = await managerDatabase.find(managerId);
 
   if (!manager)
     return res.status(404).send("There is no manager with given id");
