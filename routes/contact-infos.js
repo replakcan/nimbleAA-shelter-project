@@ -1,14 +1,14 @@
-const { contactInfoDatabase } = require("../database");
+const { contactInfoService } = require("../services");
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
-  const contactInfos = await contactInfoDatabase.load();
+  const contactInfos = await contactInfoService.load();
   res.render("contactInfos", { contactInfos });
 });
 
 //abstraction-leak
 router.get("/:contactInfoId", async (req, res) => {
-  const contactInfo = await contactInfoDatabase.findBy(
+  const contactInfo = await contactInfoService.findBy(
     "_id",
     req.params.contactInfoId
   );
@@ -20,7 +20,7 @@ router.get("/:contactInfoId", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const contactInfo = await contactInfoDatabase.insert(req.body);
+  const contactInfo = await contactInfoService.insert(req.body);
 
   res.send(contactInfo);
 });

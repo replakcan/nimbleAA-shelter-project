@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Animal = require("./animal");
-const { shelterDatabase } = require("../database");
+const { shelterService } = require("../services");
 
 const ManagerSchema = new mongoose.Schema({
   name: String,
