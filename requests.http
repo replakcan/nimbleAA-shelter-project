@@ -9,10 +9,10 @@ GET http://localhost:3000/clients/67671f7d34b5790e23f618e9 HTTP/1.1
 
 ###
 
-POST http://localhost:3000/clients/67671f7d34b5790e23f618e9/reservations HTTP/1.1
+POST http://localhost:3000/clients/67670299638f8b761c31d9fb/reservations HTTP/1.1
 content-type: application/json
 
-{"managerId": "676b00c12a65bcdb4dd3cf6a"}
+{"managerId": "676aee35f53e4123641ef679"}
 
 ###
 

@@ -14,20 +14,8 @@ const ClientSchema = new mongoose.Schema({
   ],
 });
 
-// TODO [Alper] client-database'e tasi methodu, daha sonra database'i service'e cevir.
-ClientSchema.methods.reserveMeeting = async function (manager) {
-  const reservation = await Reservation.create({
-    name: this.name + "/" + manager.name,
-  });
-  await this.reservationList.push(reservation);
-  console.log("manager:", manager.shelter.reservationList);
-  await manager.shelter.reservationList.push(reservation);
-  await this.save();
-  await manager.shelter.save();
-  await manager.save();
-
-  return manager;
-};
+// TODO [Alper] client-service'e tasi methodu, daha sonra service'i service'e cevir.
+ClientSchema.methods.reserveMeeting = async function (manager) {};
 
 ClientSchema.plugin(require("mongoose-autopopulate"));
 
