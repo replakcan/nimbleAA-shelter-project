@@ -1,6 +1,4 @@
-const { managerService, shelterService } = require("../services");
-const flatted = require("flatted");
-
+const { managerService } = require("../services");
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
@@ -26,14 +24,8 @@ router.post("/:managerId/animal-list", async (req, res) => {
   const { managerId } = req.params;
   const { breed, age } = req.body;
 
-  const manager = await managerService.find(managerId);
-  const shelter = await shelterService.find(manager.shelter);
-  const addsAnimal = await manager.addAnimal(shelter, breed, age);
+  const addsAnimal = await managerService.addAnimal(managerId, breed, age);
 
-  // console.log(manager, shelter)
-
-  await managerService.update(manager);
-  await shelterService.update(shelter);
   res.send(addsAnimal);
 });
 

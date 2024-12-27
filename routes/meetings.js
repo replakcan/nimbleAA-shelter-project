@@ -1,5 +1,4 @@
 const { meetingService } = require("../services");
-
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {

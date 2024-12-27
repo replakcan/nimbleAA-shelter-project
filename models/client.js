@@ -14,9 +14,6 @@ const ClientSchema = new mongoose.Schema({
   ],
 });
 
-// TODO [Alper] client-service'e tasi methodu, daha sonra service'i service'e cevir.
-ClientSchema.methods.reserveMeeting = async function (manager) {};
-
 ClientSchema.plugin(require("mongoose-autopopulate"));
 
 module.exports = mongoose.model("Client", ClientSchema);

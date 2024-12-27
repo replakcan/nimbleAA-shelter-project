@@ -1,5 +1,4 @@
 const { shelterService } = require("../services");
-
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
@@ -7,7 +6,6 @@ router.get("/", async (req, res) => {
   res.render("shelters", { shelters });
 });
 
-//abstraction-leak
 router.get("/:shelterId", async (req, res) => {
   const { shelterId } = req.params;
   const shelter = await shelterService.find(shelterId);

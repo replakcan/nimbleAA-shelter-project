@@ -6,7 +6,6 @@ router.get("/", async (req, res) => {
   res.render("contactInfos", { contactInfos });
 });
 
-//abstraction-leak
 router.get("/:contactInfoId", async (req, res) => {
   const contactInfo = await contactInfoService.findBy(
     "_id",

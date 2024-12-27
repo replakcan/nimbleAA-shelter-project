@@ -1,6 +1,4 @@
-const { clientService, managerService } = require("../services");
-const flatted = require("flatted");
-
+const { clientService } = require("../services");
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
@@ -8,7 +6,6 @@ router.get("/", async (req, res) => {
   res.render("clients", { clients });
 });
 
-//abstraction-leak
 router.get("/:clientId", async (req, res) => {
   const { clientId } = req.params;
   const client = await clientService.find(clientId);

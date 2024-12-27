@@ -12,17 +12,6 @@ const ManagerSchema = new mongoose.Schema({
   },
 });
 
-ManagerSchema.methods.addAnimal = async function (shelter, breed, age) {
-  const newAnimal = await Animal.create({ breed, age });
-
-  shelter.animalList.push(newAnimal);
-
-  await shelter.save();
-  await this.save();
-
-  return newAnimal;
-};
-
 ManagerSchema.plugin(require("mongoose-autopopulate"));
 
 module.exports = mongoose.model("Manager", ManagerSchema);

@@ -75,12 +75,12 @@ content-type: application/json
 }
 ###
 
-POST http://localhost:3000/managers/676aee35f53e4123641ef679/animal-list HTTP/1.1
+POST http://localhost:3000/managers/676b00c12a65bcdb4dd3cf6a/animal-list HTTP/1.1
 content-type: application/json
 
 {
-    "breed": "Cat",
-    "age": 5
+    "breed": "Dog",
+    "age": 12
 }
 
 ###
