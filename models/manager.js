@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const Animal = require("./animal");
-const { shelterService } = require("../services");
 
 const ManagerSchema = new mongoose.Schema({
   name: String,

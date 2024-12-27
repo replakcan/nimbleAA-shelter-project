@@ -9,10 +9,10 @@ GET http://localhost:3000/clients/67671f7d34b5790e23f618e9 HTTP/1.1
 
 ###
 
-POST http://localhost:3000/clients/67670299638f8b761c31d9fb/reservations HTTP/1.1
+POST http://localhost:3000/clients/676f205508ebf79b9a3b1636/reservations HTTP/1.1
 content-type: application/json
 
-{"managerId": "676aee35f53e4123641ef679"}
+{"managerId": "676f20b608ebf79b9a3b1645"}
 
 ###
 
@@ -48,7 +48,7 @@ content-type: application/json
 {
     "name": "ankaraMessi",
     "animalCapacity": 76,
-    "contactInfo": "676b00882a65bcdb4dd3cf65",
+    "contactInfo": "676f208e08ebf79b9a3b163a",
     "animalList": [],
     "reservationList": []
 }
@@ -71,16 +71,16 @@ content-type: application/json
 {
     "name": "Mecit",
     "age": 45,
-    "shelter": "676b00a22a65bcdb4dd3cf67"
+    "shelter": "676f209c08ebf79b9a3b163c"
 }
 ###
 
-POST http://localhost:3000/managers/676b00c12a65bcdb4dd3cf6a/animal-list HTTP/1.1
+POST http://localhost:3000/managers/676f20b608ebf79b9a3b1645/animal-list HTTP/1.1
 content-type: application/json
 
 {
-    "breed": "Dog",
-    "age": 12
+    "breed": "Bird",
+    "age": 2
 }
 
 ###

@@ -1,9 +1,13 @@
 const BaseService = require("./base-service");
 const Manager = require("../models/manager");
 const Animal = require("../models/animal");
-const shelterService = require("./shelter-service");
 
 class ManagerService extends BaseService {
+  constructor(model, shelterService) {
+    super(model);
+    this.shelterService = shelterService;
+  }
+
   async find(id) {
     return this.model.findById(id).populate("shelter");
   }
@@ -12,7 +16,7 @@ class ManagerService extends BaseService {
     const newAnimal = await Animal.create({ breed, age });
 
     const manager = await this.find(managerId);
-    const shelter = await shelterService.find(manager.shelter);
+    const shelter = await this.shelterService.find(manager.shelter);
 
     shelter.animalList.push(newAnimal);
 
@@ -23,4 +27,4 @@ class ManagerService extends BaseService {
   }
 }
 
-module.exports = new ManagerService(Manager);
+module.exports = (shelterService) => new ManagerService(Manager, shelterService);
