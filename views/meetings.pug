@@ -1,0 +1,11 @@
+extends layout
+block content
+    p There are #{meetings.length} meetings registered in the system.
+
+    ol
+        each meeting in meetings
+            li 
+            p Client:
+                a(href=`/clients/${meeting.client}`) client informations
+            p Shelter:
+                a(href=`/shelters/${meeting.shelter}`) shelter informations

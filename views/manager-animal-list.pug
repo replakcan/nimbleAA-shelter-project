@@ -1,0 +1,9 @@
+extends layout
+block content            
+    body
+        h2 Animal Details:
+        ol
+            each animal in animalList
+                li
+                    h3 animal is a #{animal.breed} and #{animal.age} years old
+                

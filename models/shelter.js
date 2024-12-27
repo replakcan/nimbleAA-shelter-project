@@ -1,41 +1,33 @@
 const Animal = require("./animal");
 const ContactInfo = require("./contactInfo");
 const Reservation = require("./reservation");
+const mongoose = require("mongoose");
 
-//TODO [alper] Shelter'in id'si olmali mi?
-module.exports = class Shelter {
-  constructor(
-    name,
-    animalCapacity,
-    ContactInfo,
-    animalList = [],
-    reservationList = []
-  ) {
-    this.name = name;
-    this.animalCapacity = animalCapacity;
-    this.ContactInfo = ContactInfo;
-    this.animalList = animalList;
-    this.reservationList = reservationList;
-  }
 
-  static create({
-    name,
-    animalCapacity,
-    ContactInfo: cntctInfo,
-    animalList: anmlList,
-    reservationList: rsrvtnList,
-  }) {
-    const newShelter = new Shelter(
-      name,
-      animalCapacity,
-      ContactInfo.create(cntctInfo)
-    );
+const ShelterSchema = new mongoose.Schema({
+  name: String,
+  animalCapacity: Number,
+  contactInfo: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ContactInfo",
+    autopopulate: 2,
+  },
+  animalList: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Animal",
+      autopopulate: 2,
+    },
+  ],
+  reservationList: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Reservation",
+      autopopulate: 2,
+    },
+  ],
+});
 
-    newShelter.animalList = anmlList.map((animal) => Animal.create(animal));
-    newShelter.reservationList = rsrvtnList.map((reservation) =>
-      Reservation.create(reservation)
-    );
+ShelterSchema.plugin(require("mongoose-autopopulate"));
 
-    return newShelter;
-  }
-};
+module.exports = mongoose.model("Shelter", ShelterSchema);

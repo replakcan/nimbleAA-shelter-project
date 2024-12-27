@@ -1,0 +1,13 @@
+extends layout
+block content            
+    body
+        h2 Shelter Details
+        p name: #{shelter.name}
+        p total animal capacity: #{shelter.animalCapacity}
+        a(href=`/shelters/${shelter.id}/animal-list`) click to see the current animal list
+        pre reservation list: #{JSON.stringify(shelter.reservationList, null, 4)}
+
+        h3 Contact Info
+        p phone: #{shelter.contactInfo.phone}
+        p email: #{shelter.contactInfo.email}
+        p loaction: #{shelter.contactInfo.location}

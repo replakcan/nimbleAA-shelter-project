@@ -1,16 +1,14 @@
-const { clientDatabase, shelterManagerDatabase } = require("../database");
-const flatted = require("flatted");
-
+const { clientService } = require("../services");
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
-  const clients = await clientDatabase.load();
-  //   res.send(flatted.stringify(clients));
+  const clients = await clientService.load();
   res.render("clients", { clients });
 });
 
 router.get("/:clientId", async (req, res) => {
-  const client = await clientDatabase.findBy("id", req.params.clientId);
+  const { clientId } = req.params;
+  const client = await clientService.find(clientId);
 
   if (!client) return res.status(404).send("There is no client with given id");
 
@@ -18,32 +16,29 @@ router.get("/:clientId", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  // const client = Client.create(req.body);
-
-  const client = await clientDatabase.insert(req.body);
+  const client = await clientService.insert(req.body);
 
   res.send(client);
 });
 
 router.post("/:clientId/reservations", async (req, res) => {
   const { clientId } = req.params;
-  const { shelterManagerId } = req.body;
+  const { managerId } = req.body;
 
-  const client = await clientDatabase.findBy("id", clientId);
-  const shelterManager = await shelterManagerDatabase.findBy(
-    "id",
-    shelterManagerId
-  );
+  const meeting = await clientService.reserveMeeting(clientId, managerId);
 
-  client.reserveMeeting(shelterManager);
+  res.send(meeting);
+});
 
-  await clientDatabase.update(client);
+router.patch("/:clientId", async (req, res) => {
+  const { name } = req.body;
+  const { clientId } = req.params;
 
-  res.send(flatted.stringify(client));
+  await clientService.update(clientId, { name });
 });
 
 router.delete("/:clientId", async (req, res) => {
-  const client = await clientDatabase.removeBy("id", req.params.clientId);
+  const client = await clientService.removeBy("_id", req.params.clientId);
 
   res.send(client);
 });

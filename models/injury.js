@@ -1,9 +1,7 @@
-module.exports = class Injury {
-  constructor(description) {
-    this.description = description;
-  }
+const mongoose = require("mongoose");
 
-  static create({ description }) {
-    return new Injury(description);
-  }
-};
+const InjurySchema = new mongoose.Schema({
+  description: String,
+});
+
+module.exports = mongoose.model("Injury", InjurySchema);

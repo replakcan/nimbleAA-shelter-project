@@ -1,19 +1,14 @@
+const mongoose = require("mongoose");
 const Injury = require("./injury");
-const uuid = require("uuid");
 
-module.exports = class Animal {
-  constructor(id = uuid.v4(), breed, age, injuries = []) {
-    this.id = id;
-    this.breed = breed;
-    this.age = age;
-    this.injuries = injuries;
-  }
+const AnimalSchema = new mongoose.Schema({
+  breed: String,
+  age: Number,
+  injuries: [
+    { type: mongoose.Schema.Types.ObjectId, ref: "Injury", autopopulate: true },
+  ],
+});
 
-  static create({ id, breed, age, injuries: injries }) {
-    const newAnimal = new Animal(id, breed, age);
+AnimalSchema.plugin(require("mongoose-autopopulate"));
 
-    newAnimal.injuries = injries?.map((injury) => Injury.create(injury));
-
-    return newAnimal;
-  }
-};
+module.exports = mongoose.model("Animal", AnimalSchema);

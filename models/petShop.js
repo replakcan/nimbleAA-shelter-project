@@ -1,17 +1,22 @@
+const mongoose = require("mongoose");
 const ContactInfo = require("./contactInfo");
 const Product = require("./product");
 
-//TODO [alper] petShop'un id'si olmali mi?
-module.exports = class PetShop {
-  constructor(ContactInfo, productList = []) {
-    this.ContactInfo = ContactInfo;
-    this.productList = productList;
-  }
+const PetShopSchema = new mongoose.Schema({
+  contactInfo: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ContactInfo",
+    autopopulate: true,
+  },
+  productList: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product",
+      autopopulate: true,
+    },
+  ],
+});
 
-  static create({ ContactInfo: cntctInfo, productList: prdctlst }) {
-    const newPetShop = new PetShop(ContactInfo.create(cntctInfo));
-    newPetShop.productList = prdctlst.map((product) => Product.create(product));
+PetShopSchema.plugin(require("mongoose-autopopulate"));
 
-    return newPetShop;
-  }
-};
+module.exports = mongoose.model("PetShop", PetShopSchema);

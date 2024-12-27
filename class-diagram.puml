@@ -6,7 +6,7 @@ class User <<Entity>> {
     + role: Role
 }
 
-class ShelterManager <<Entity>> {
+class Manager <<Entity>> {
     + shelterOwned: Shelter
     + updateShelterAnimalList()
 }
@@ -84,8 +84,8 @@ ShopOwner -up-|> User
 ShopOwner *--> PetShop
 PetShop *--> ContactInfo
 PetShop o--> Product
-ShelterManager -up-|> User
-ShelterManager *--> Shelter
+Manager -up-|> User
+Manager *--> Shelter
 Shelter *--> ContactInfo
 Shelter *--> Reservation
 Shelter o--> Animal
