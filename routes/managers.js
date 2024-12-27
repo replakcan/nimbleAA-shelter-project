@@ -29,7 +29,6 @@ router.post("/:managerId/animal-list", async (req, res) => {
   res.send(addsAnimal);
 });
 
-//abstraction-leak
 router.get("/:managerId", async (req, res) => {
   const { managerId } = req.params;
   const manager = await managerService.find(managerId);
