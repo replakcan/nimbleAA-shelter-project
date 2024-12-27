@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/week-5", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/week-5", {serverSelectionTimeoutMS: 30000 });
 
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
