@@ -37,7 +37,9 @@ router.patch("/:clientId", async (req, res) => {
   const { name } = req.body;
   const { clientId } = req.params;
 
-  await clientService.update(clientId, { name });
+  const updatedClient = await clientService.update(clientId, { name });
+
+  res.send(updatedClient);
 });
 
 router.delete("/:clientId", async (req, res) => {

@@ -1,4 +1,5 @@
 const app = require("../index");
+const { meetingService } = require("../services");
 const request = require("supertest")(app);
 
 test("creates a new reservation", async () => {
@@ -52,8 +53,35 @@ test("creates a new reservation", async () => {
 
   const reservationCreated = reservationResponse.body;
 
+  // checks if all meetings can be get successfully
   expect(reservationCreated).toMatchObject({
     client: { _id: clientResponse.body._id },
     shelter: { _id: shelterResponse.body._id },
   });
+
+  await request.get("/meetings").expect(200);
+
+  // checks if meetings can be searched through
+  const meetingSearchWithClientId = await request
+    .get(`/meetings/search?clientId=${clientResponse.body._id}`)
+    .expect(200)
+    .expect((res) => {
+      expect(res.text).toContain(`${clientResponse.body._id}`);
+    });
+
+  /* const meetingSearchWithShelterId = await request
+    .get(`/meetings/search?shelterId=${shelterResponse.body._id}`)
+    .expect(200)
+    .expect((res) => {
+      expect(res.text).toContain(`${shelterResponse.body._id}`);
+    });
+
+  console.log("WITHSHELTERID: ", meetingSearchWithShelterId.body); */
+
+  const foundReservation = await meetingService.find(reservationCreated._id);
+
+  // Test doğrulamaları
+  expect(foundReservation).not.toBeNull();
+  expect(foundReservation.client.name).toBe("John Doe");
+  expect(foundReservation.shelter.name).toBe("Shelter Name");
 });
