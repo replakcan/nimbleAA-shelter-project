@@ -8,11 +8,14 @@ router.get("/", async (req, res) => {
 
 router.get("/:clientId", async (req, res) => {
   const { clientId } = req.params;
-  const client = await clientService.find(clientId);
 
-  if (!client) return res.status(404).send("There is no client with given id");
-
-  res.render("client", { client });
+  try {
+    const client = await clientService.find(clientId);
+    res.render("client", { client });
+  } catch (error) {
+    console.log(error);
+    return res.status(404).send("There is no client with given id");
+  }
 });
 
 router.post("/", async (req, res) => {

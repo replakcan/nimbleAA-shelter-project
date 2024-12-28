@@ -7,15 +7,16 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:contactInfoId", async (req, res) => {
-  const contactInfo = await contactInfoService.findBy(
-    "_id",
-    req.params.contactInfoId
-  );
-
-  if (!contactInfo)
+  try {
+    const contactInfo = await contactInfoService.findBy(
+      "_id",
+      req.params.contactInfoId
+    );
+    res.render("contactInfo", { contactInfo });
+  } catch (error) {
+    console.log(error);
     return res.status(404).send("There is no contactInfo with given id");
-
-  res.render("contactInfo", { contactInfo });
+  }
 });
 
 router.post("/", async (req, res) => {
