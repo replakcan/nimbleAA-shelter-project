@@ -1,5 +1,4 @@
 const app = require("../index");
-const contactInfo = require("../models/contactInfo");
 const request = require("supertest")(app);
 
 test("creates a new reservation", async () => {
