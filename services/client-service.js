@@ -22,7 +22,7 @@ class ClientService extends BaseService {
     await manager.shelter.save();
     await manager.save();
 
-    return manager;
+    return reservation;
   }
 }
 
