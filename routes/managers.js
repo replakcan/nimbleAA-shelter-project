@@ -29,27 +29,29 @@ router.post("/:managerId/animal-list", async (req, res) => {
   res.send(addsAnimal);
 });
 
-//abstraction-leak
 router.get("/:managerId", async (req, res) => {
   const { managerId } = req.params;
-  const manager = await managerService.find(managerId);
-
-  if (!manager)
+  try {
+    const manager = await managerService.find(managerId);
+    res.render("manager", { manager });
+  } catch (error) {
     return res.status(404).send("There is no manager with given id");
-
-  res.render("manager", { manager });
+  }
 });
 
 router.patch("/:managerId", async (req, res) => {
   const { name } = req.body;
   const { managerId } = req.params;
 
-  await managerService.update(managerId, { name });
+  const updatedManager = await managerService.update(managerId, { name });
+
+  res.send(updatedManager);
 });
 
 router.delete("/:managerId", async (req, res) => {
   const manager = await managerService.removeBy("_id", req.params.managerId);
 
+  console.log(manager);
   res.send(manager);
 });
 

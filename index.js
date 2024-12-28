@@ -21,6 +21,4 @@ app.use("/managers", managersRouter);
 app.use("/shelters", sheltersRouter);
 app.use("/contact-infos", contactInfosRouter);
 
-app.listen(3000, () => {
-  console.log("started listening on 3000");
-});
+module.exports = app;

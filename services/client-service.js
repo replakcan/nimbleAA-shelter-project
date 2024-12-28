@@ -1,12 +1,16 @@
 const BaseService = require("./base-service");
 const Client = require("../models/client");
 const meetingService = require("./meeting-service");
-const managerService = require("./manager-service");
 
 class ClientService extends BaseService {
+  constructor(model, managerService) {
+    super(model);
+    this.managerService = managerService;
+  }
+
   async reserveMeeting(clientId, managerId) {
     const client = await this.find(clientId);
-    const manager = await managerService.find(managerId);
+    const manager = await this.managerService.find(managerId);
 
     const reservation = await meetingService.insert({
       client: client,
@@ -18,8 +22,8 @@ class ClientService extends BaseService {
     await manager.shelter.save();
     await manager.save();
 
-    return manager;
+    return reservation;
   }
 }
 
-module.exports = new ClientService(Client);
+module.exports = (managerService) => new ClientService(Client, managerService);

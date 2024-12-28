@@ -1,7 +1,7 @@
 POST http://localhost:3000/clients HTTP/1.1
 content-type: application/json
 
-{"name": "Alper", "age": 28}
+{"name": "TESTPER", "age": 30}
 
 ###
 
@@ -9,10 +9,10 @@ GET http://localhost:3000/clients/67671f7d34b5790e23f618e9 HTTP/1.1
 
 ###
 
-POST http://localhost:3000/clients/67670299638f8b761c31d9fb/reservations HTTP/1.1
+POST http://localhost:3000/clients/67696772cd255381bdebc8a0/reservations HTTP/1.1
 content-type: application/json
 
-{"managerId": "676aee35f53e4123641ef679"}
+{"managerId": "676fece3889b938c76146323"}
 
 ###
 
@@ -27,13 +27,6 @@ content-type: application/json
 
 ###
 
-POST http://localhost:3000/managers HTTP/1.1
-content-type: application/json
-
-{"name": "Gustavo Ping", "age": 54}
-
-###
-
 DELETE http://localhost:3000/managers/676ae3aa72b498e5f11b0a00 HTTP/1.1
 
 ###
@@ -41,46 +34,46 @@ DELETE http://localhost:3000/managers/676ae3aa72b498e5f11b0a00 HTTP/1.1
 GET http://localhost:3000/managers/676969298d681211d25a0a1b HTTP/1.1
 
 ###
-
-POST http://localhost:3000/shelters HTTP/1.1
-content-type: application/json
-
-{
-    "name": "ankaraMessi",
-    "animalCapacity": 76,
-    "contactInfo": "676b00882a65bcdb4dd3cf65",
-    "animalList": [],
-    "reservationList": []
-}
-###
-
 POST http://localhost:3000/contact-infos HTTP/1.1
 content-type: application/json
 
 {
-    "phone":"+335252352" , 
-    "email":"mecit@shelter.com",
+    "phone":"335252352" , 
+    "email":"test@test.com",
     "location":"Ankara"
 }
 
 ###
 
+POST http://localhost:3000/shelters HTTP/1.1
+content-type: application/json
+
+{
+    "name": "test",
+    "animalCapacity": 76,
+    "contactInfo": "676fecb2889b938c76146315",
+    "animalList": [],
+    "reservationList": []
+}
+###
+
+
 POST http://localhost:3000/managers HTTP/1.1
 content-type: application/json
 
 {
-    "name": "Mecit",
+    "name": "TESTCİBABA",
     "age": 45,
-    "shelter": "676b00a22a65bcdb4dd3cf67"
+    "shelter": "676feccd889b938c7614631a"
 }
 ###
 
-POST http://localhost:3000/managers/676b00c12a65bcdb4dd3cf6a/animal-list HTTP/1.1
+POST http://localhost:3000/managers/676f20b608ebf79b9a3b1645/animal-list HTTP/1.1
 content-type: application/json
 
 {
-    "breed": "Dog",
-    "age": 12
+    "breed": "Bird",
+    "age": 2
 }
 
 ###

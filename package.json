@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "nodemon --ignore '*.json'"
+    "start": "node .bin/www",
+    "test": "jest --coverage --verbose",
+    "watch": "nodemon --ignore '*.json' .bin/www",
+    "test-watch": "jest --coverage --watch"
   },
   "author": "Alper Akcan <alper.makcan@gmail.com>",
   "license": "MIT",
@@ -14,12 +16,15 @@
     "body-parser": "^1.20.3",
     "express": "^4.21.2",
     "flatted": "^3.3.2",
+    "madge": "^8.0.0",
     "mongoose": "^8.9.2",
     "mongoose-autopopulate": "^1.1.0",
     "pug": "^3.0.3",
     "uuid": "^11.0.3"
   },
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.9",
+    "supertest": "^7.0.0"
   }
 }
