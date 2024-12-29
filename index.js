@@ -5,12 +5,14 @@ const managersRouter = require("./routes/managers");
 const sheltersRouter = require("./routes/shelters");
 const contactInfosRouter = require("./routes/contact-infos");
 const meetingRouter = require("./routes/meetings");
+const cors = require("cors");
 
 const indexRouter = require("./routes/index");
 require("./mongo-connection");
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 
 app.set("view engine", "pug");
 
