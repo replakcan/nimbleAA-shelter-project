@@ -2,8 +2,7 @@ const { clientService } = require("../services");
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
-  const clients = await clientService.load();
-  res.render("clients", { clients });
+  res.send(await clientService.load());
 });
 
 router.get("/:clientId", async (req, res) => {
@@ -11,7 +10,7 @@ router.get("/:clientId", async (req, res) => {
 
   try {
     const client = await clientService.find(clientId);
-    res.render("client", { client });
+    res.send(client);
   } catch (error) {
     console.log(error);
     return res.status(404).send("There is no client with given id");
