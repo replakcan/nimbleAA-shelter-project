@@ -28,7 +28,7 @@ export default {
   p(v-else) There are {{clients.length}} clients registered in the system.
 
   ol
-      li(v-for="client in clients")
-          a(:href="`clients/${client._id}`") {{client.name}}
+    li(v-for="client in clients")
+        a(:href="`clients/${client._id}`") {{client.name}}
 
 </template>

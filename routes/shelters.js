@@ -11,7 +11,7 @@ router.get("/:shelterId", async (req, res) => {
   try {
     const shelter = await shelterService.find(shelterId);
     
-    res.render("shelter", { shelter });
+    res.send(shelter)  
   } catch (error) {
     return res.status(404).send("There is no shelter with given id");
   }

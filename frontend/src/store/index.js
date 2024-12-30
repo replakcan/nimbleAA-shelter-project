@@ -10,8 +10,7 @@ const Mutations = {
 
 export default createStore({
   state: {
-    count: 0,
-    clients: []
+    count: 0
   },
   getters: {
   },
@@ -37,6 +36,10 @@ export default createStore({
     },
     async fetchClient (ctx, clientId) {
       const request = await axios.get(`/clients/${clientId}`)
+      return request.data
+    },
+    async fetchShelter (ctx, shelterId) {
+      const request = await axios.get(`/shelters/${shelterId}`)
       return request.data
     }
   }
