@@ -1,4 +1,5 @@
-const { clientService } = require("../services");
+const { clientService, shelterService } = require("../services");
+const animalService = require("../services/animal-service");
 const router = require("express").Router();
 
 router.get("/", async (req, res) => {
@@ -30,6 +31,15 @@ router.post("/:clientId/reservations", async (req, res) => {
   const meeting = await clientService.reserveMeeting(clientId, managerId);
 
   res.send(meeting);
+});
+
+router.post("/:clientId/adoptions", async (req, res) => {
+  const { clientId } = req.params;
+  const { animalId } = req.body;
+
+  const adoption = await clientService.adoptAnimal(clientId, animalId);
+
+  res.send(adoption);
 });
 
 router.patch("/:clientId", async (req, res) => {

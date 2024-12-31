@@ -1,13 +1,9 @@
 const BaseService = require("./base-service");
 const Client = require("../models/client");
 const meetingService = require("./meeting-service");
+const shelterService = require("./shelter-service");
 
 class ClientService extends BaseService {
-  constructor(model, managerService) {
-    super(model);
-    this.managerService = managerService;
-  }
-
   async reserveMeeting(clientId, managerId) {
     const client = await this.find(clientId);
     const manager = await this.managerService.find(managerId);
@@ -24,6 +20,19 @@ class ClientService extends BaseService {
 
     return reservation;
   }
+
+  async adoptAnimal(clientId, animalId) {
+    const client = await this.find(clientId);
+    const shelter = await shelterService.findShelterByAnimalId(animalId);
+    
+    await client.pets.push(animalId);
+    await shelter.animalList.pull(animalId);
+    
+    await client.save();
+    await shelter.save();
+
+    return { client, shelter };
+  }
 }
 
-module.exports = (managerService) => new ClientService(Client, managerService);
+module.exports = new ClientService(Client);

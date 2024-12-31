@@ -4,7 +4,11 @@ const mongoose = require("mongoose");
 const ClientSchema = new mongoose.Schema({
   name: String,
   age: Number,
-  pets: [],
+  pets: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Animal",
+    autopopulate: 2,
+  }],
   reservationList: [
     {
       type: mongoose.Schema.Types.ObjectId,
