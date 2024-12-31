@@ -1,6 +1,5 @@
 const BaseService = require("./base-service");
 const Shelter = require("../models/shelter");
-const animalService = require("./animal-service");
 
 class ShelterService extends BaseService {
   async find(id) {
