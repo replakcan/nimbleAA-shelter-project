@@ -3,7 +3,7 @@ const router = require("express").Router();
 
 router.get("/", async (req, res) => {
   const shelters = await shelterService.load();
-  res.render("shelters", { shelters });
+  res.send(shelters);
 });
 
 router.get("/:shelterId", async (req, res) => {
@@ -23,7 +23,7 @@ router.get("/:shelterId/animal-list", async (req, res) => {
 
   const animalList = shelter.animalList;
 
-  res.render("manager-animal-list", { animalList });
+  res.send(animalList);
 });
 
 router.post("/", async (req, res) => {

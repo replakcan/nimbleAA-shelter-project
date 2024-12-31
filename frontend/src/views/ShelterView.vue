@@ -14,7 +14,10 @@ export default {
     this.isLoading = false
   },
   methods: {
-    ...mapActions(['fetchShelter'])
+    ...mapActions(['fetchShelter']),
+    showAnimals () {
+      this.$router.push(`/shelters/${this.$route.params.shelterId}/animal-list`)
+    }
   }
 }
 </script>
@@ -24,21 +27,15 @@ export default {
     p(v-if="isLoading") Loading...
     p(v-else)
     h1 Shelter Details
-    p shelter name: {{shelter.name}}
-    p shelter total animal capacity: {{shelter.animalCapacity}}
-    h2 shelter contact info:
+    p name: {{shelter.name}}
+    p total animal capacity: {{shelter.animalCapacity}}
+    h2 contact info:
     p(v-if="shelter.contactInfo")
-        p shelter phone: {{shelter.contactInfo.phone}}
-        p shelter email: {{shelter.contactInfo.email}}
-        p shelter location: {{shelter.contactInfo.location}}
-    h2 shelter animals:
-    ol
-        li(v-for="animal in shelter.animalList")
-            ul
-                li breed: {{animal.breed}}
-                li age: {{animal.age}}
-                li injuries: {{animal.injuries}}
-    h2 shelter reservations:
+        p phone: {{shelter.contactInfo.phone}}
+        p email: {{shelter.contactInfo.email}}
+        p location: {{shelter.contactInfo.location}}
+    button(@click="showAnimals()") Click to see shelter animals
+    h2 reservations:
     ol
         li(v-for="reservation in shelter.reservationList")
             ul

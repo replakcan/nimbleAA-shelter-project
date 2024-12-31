@@ -3,11 +3,6 @@ const Manager = require("../models/manager");
 const Animal = require("../models/animal");
 
 class ManagerService extends BaseService {
-  constructor(model, shelterService) {
-    super(model);
-    this.shelterService = shelterService;
-  }
-
   async find(id) {
     return this.model.findById(id).populate("shelter");
   }
@@ -27,4 +22,4 @@ class ManagerService extends BaseService {
   }
 }
 
-module.exports = (shelterService) => new ManagerService(Manager, shelterService);
+module.exports = new ManagerService(Manager);

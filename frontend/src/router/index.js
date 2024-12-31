@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Clients from '../views/Clients.vue'
 import ClientView from '../views/ClientView.vue'
 import ShelterView from '@/views/ShelterView.vue'
+import SheltersView from '@/views/SheltersView.vue'
+import Animals from '@/views/Animals.vue'
 
 const routes = [
   {
@@ -15,9 +17,19 @@ const routes = [
     component: ClientView
   },
   {
+    path: '/shelters/:shelterId/animal-list',
+    name: 'Animals',
+    component: Animals
+  },
+  {
     path: '/shelters/:shelterId',
     name: 'ShelterView',
     component: ShelterView
+  },
+  {
+    path: '/shelters',
+    name: 'SheltersView',
+    component: SheltersView
   },
   {
     path: '/about',

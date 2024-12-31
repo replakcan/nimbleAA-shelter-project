@@ -38,8 +38,20 @@ export default createStore({
       const request = await axios.get(`/clients/${clientId}`)
       return request.data
     },
+    async fetchShelters () {
+      const request = await axios.get('/shelters')
+      return request.data
+    },
     async fetchShelter (ctx, shelterId) {
       const request = await axios.get(`/shelters/${shelterId}`)
+      return request.data
+    },
+    async fetchAnimals (ctx, shelterId) {
+      const request = await axios.get(`/shelters/${shelterId}/animal-list`)
+      return request.data
+    },
+    async adoptAnimal (ctx, { clientId, animalId }) {
+      const request = await axios.post(`/clients/${clientId}/adoptions`, { animalId })
       return request.data
     }
   }

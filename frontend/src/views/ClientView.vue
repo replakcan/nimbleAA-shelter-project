@@ -26,7 +26,9 @@ export default {
       h1 Client Details
       p {{client.name}}
       p {{client.age}}
-      p(v-if="client.pets.length") pets: {{client.pets}}
+      p(v-if="client.pets.length > 0") pets:
+        ul
+          li(v-for="pet in client.pets") {{pet.breed}}, {{pet.age}}
       p(v-else) pets: This client has no pets.
       h2 reservations:
       ol
