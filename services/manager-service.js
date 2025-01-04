@@ -11,7 +11,7 @@ class ManagerService extends BaseService {
     const newAnimal = await Animal.create({ breed, age });
 
     const manager = await this.find(managerId);
-    const {shelter} = manager;
+    const { shelter } = manager;
 
     await shelter.animalList.push(newAnimal);
 

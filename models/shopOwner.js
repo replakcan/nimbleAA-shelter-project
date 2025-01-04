@@ -7,7 +7,7 @@ const PetShopOwnerSchema = new mongoose.Schema({
   petShop: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "PetShop",
-    autopopulate: true,
+    autopopulate: 2,
   },
 });
 

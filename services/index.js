@@ -4,6 +4,7 @@ const clientService = require("./client-service");
 const contactInfoService = require("./contact-info-service");
 const shopOwnerService = require("./shopOwner-service");
 const meetingService = require("./meeting-service");
+const petShopService = require("./petShop-service");
 
 module.exports = {
   clientService,
@@ -12,4 +13,5 @@ module.exports = {
   shelterService,
   contactInfoService,
   meetingService,
+  petShopService,
 };

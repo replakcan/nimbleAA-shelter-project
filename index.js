@@ -5,6 +5,8 @@ const managersRouter = require("./routes/managers");
 const sheltersRouter = require("./routes/shelters");
 const contactInfosRouter = require("./routes/contact-infos");
 const meetingRouter = require("./routes/meetings");
+const petShopRouter = require("./routes/petShop");
+const shopOwnerRouter = require("./routes/petShopOwner");
 const cors = require("cors");
 
 const indexRouter = require("./routes/index");
@@ -18,9 +20,11 @@ app.set("view engine", "pug");
 
 app.use("/", indexRouter);
 app.use("/clients", clientsRouter);
+app.use("/pet-shops", petShopRouter);
 app.use("/meetings", meetingRouter);
-app.use("/managers", managersRouter);
 app.use("/shelters", sheltersRouter);
+app.use("/managers", managersRouter);
+app.use("/shop-owners", shopOwnerRouter);
 app.use("/contact-infos", contactInfosRouter);
 
 module.exports = app;

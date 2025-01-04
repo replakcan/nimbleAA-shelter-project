@@ -6,13 +6,13 @@ const PetShopSchema = new mongoose.Schema({
   contactInfo: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "ContactInfo",
-    autopopulate: true,
+    autopopulate: 2,
   },
   productList: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Product",
-      autopopulate: true,
+      autopopulate: 2,
     },
   ],
 });
