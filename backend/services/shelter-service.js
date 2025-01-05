@@ -8,7 +8,7 @@ class ShelterService extends BaseService {
 
   async findShelterByAnimalId(animalId) {
     const shelter = await this.model.findOne({ animalList: animalId });
-    console.log("shelter:", shelter)
+    
     return shelter;
   }
 }
