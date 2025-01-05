@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/week-5", {serverSelectionTimeoutMS: 30000 });
+
+const connectionString = process.env.MONGODB_CONNECTION_STRING || "mongodb://mongodb/week-5";
+
+mongoose.connect(connectionString, {serverSelectionTimeoutMS: 30000 });
 
 var db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));

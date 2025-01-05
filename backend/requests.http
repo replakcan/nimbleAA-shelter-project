@@ -39,7 +39,7 @@ content-type: application/json
 
 {
     "phone":"335252352" , 
-    "email":"test@test.com",
+    "email":"memed@memedov.com",
     "location":"Ankara"
 }
 
@@ -49,9 +49,9 @@ POST http://localhost:3000/shelters HTTP/1.1
 content-type: application/json
 
 {
-    "name": "test",
+    "name": "Memedistanblue",
     "animalCapacity": 76,
-    "contactInfo": "676fecb2889b938c76146315",
+    "contactInfo": "677a93ddf320ac62a5e3c5f0",
     "animalList": [],
     "reservationList": []
 }
@@ -62,9 +62,9 @@ POST http://localhost:3000/managers HTTP/1.1
 content-type: application/json
 
 {
-    "name": "TESTCİBABA",
+    "name": "Slim Memed",
     "age": 45,
-    "shelter": "676feccd889b938c7614631a"
+    "shelter": "677a93e2f320ac62a5e3c5f2"
 }
 ###
 
@@ -74,6 +74,16 @@ content-type: application/json
 {
     "breed": "Bird",
     "age": 2
+}
+
+###
+
+POST http://localhost:3000/clients HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Larry Bird",
+    "age": 45
 }
 
 ###
