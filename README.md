@@ -23,3 +23,4 @@
   - MongoDB
   - Docker
   - AWS
+  - Jest (for testing)
